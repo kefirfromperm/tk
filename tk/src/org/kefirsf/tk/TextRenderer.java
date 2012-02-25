@@ -50,6 +50,7 @@ public class TextRenderer {
             index++;
             graphics.drawString(str, PADDING, index * STRING_HEIGHT + PADDING);
         }
+        graphics.dispose();
 
         return image;
     }

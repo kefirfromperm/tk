@@ -20,15 +20,14 @@ public class RenderServlet extends HttpServlet {
         fileGenerator.setDirectory(new File("d:\\tmp"));
     }
 
-    protected void service(
+    protected void doPost(
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
         String message = request.getParameter("message");
         if (message != null) {
             File file = fileGenerator.newFile();
             renderer.render(message, file);
-            response.getWriter().write("OK");
-            response.flushBuffer();
+            response.sendRedirect("/i/"+file.getName());
         } else {
             response.sendRedirect("/");
         }
