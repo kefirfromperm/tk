@@ -155,7 +155,7 @@ public class TextRenderer {
 
         @Override
         public int compareTo(Region o) {
-            return this.start - o.start;
+            return o.start - this.start;
         }
 
         @Override

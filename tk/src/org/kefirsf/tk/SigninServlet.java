@@ -21,7 +21,15 @@ public class SigninServlet extends HttpServlet {
         Twitter twitter = new TwitterFactory().getInstance();
         request.getSession().setAttribute("twitter", twitter);
         try {
-            String callbackUrl = request.getServerName() + ":" + request.getLocalPort() + request.getContextPath() + "/callback";
+            String callbackUrl =
+                    new StringBuilder()
+                            .append("http://")
+                            .append(request.getServerName())
+                            .append(":")
+                            .append(request.getLocalPort())
+                            .append(request.getContextPath())
+                            .append("/callback")
+                            .toString();
             System.out.println(callbackUrl);
 
             RequestToken requestToken = twitter.getOAuthRequestToken(callbackUrl);

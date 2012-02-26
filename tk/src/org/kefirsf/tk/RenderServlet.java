@@ -1,5 +1,9 @@
 package org.kefirsf.tk;
 
+import twitter4j.StatusUpdate;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +32,21 @@ public class RenderServlet extends HttpServlet {
             File file = fileGenerator.newFile();
             renderer.render(message, file);
             response.sendRedirect("/i/"+file.getName());
+
+/*
+            Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
+            if(twitter!=null){
+                StatusUpdate su = new StatusUpdate("test tk");
+                su.media(file);
+                try {
+                    twitter.updateStatus(su);
+                } catch (TwitterException e) {
+                    throw new ServletException(e);
+                }
+            }else{
+                throw new ServletException("Twitter not found!");
+            }
+*/
         } else {
             response.sendRedirect("/");
         }
