@@ -21,14 +21,12 @@ public class SigninServlet extends HttpServlet {
         Twitter twitter = new TwitterFactory().getInstance();
         request.getSession().setAttribute("twitter", twitter);
         try {
-/*            String callbackUrl = new StringBuilder()
+            String callbackUrl = new StringBuilder()
                     .append(ConfigurationHolder.getInstance().get("server.url"))
                     .append("/callback")
                     .toString();
-            System.out.println(callbackUrl);
-            */
 
-            RequestToken requestToken = twitter.getOAuthRequestToken();
+            RequestToken requestToken = twitter.getOAuthRequestToken(callbackUrl);
             request.getSession().setAttribute("requestToken", requestToken);
             response.sendRedirect(requestToken.getAuthenticationURL());
         } catch (TwitterException e) {

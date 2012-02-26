@@ -152,7 +152,6 @@ public class TextRenderer {
             return punct;
         }
 
-        @Override
         public int compareTo(Region o) {
             return o.start - this.start;
         }

@@ -26,7 +26,7 @@ public class TwitServlet extends HttpServlet {
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
         String message = request.getParameter("message");
-        if (message == null || message.trim().isEmpty()) {
+        if (message == null || message.trim().equals("")) {
             request.setAttribute(ERROR_MESSAGE, "Long twit can't be blank.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } else if (message.length() > MAX_SIZE) {
