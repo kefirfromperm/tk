@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+    <!-- Filters-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>org.kefirsf.tk.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>org.kefirsf.tk.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>/twit</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <!-- Auth page -->
+    <servlet>
+        <servlet-name>auth</servlet-name>
+        <jsp-file>/auth.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>auth</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>TwitServlet</servlet-name>
+        <servlet-class>org.kefirsf.tk.TwitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TwitServlet</servlet-name>
+        <url-pattern>/twit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CallbackServlet</servlet-name>
+        <servlet-class>org.kefirsf.tk.CallbackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CallbackServlet</servlet-name>
+        <url-pattern>/callback</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SigninServlet</servlet-name>
+        <servlet-class>org.kefirsf.tk.SigninServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SigninServlet</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+</web-app>

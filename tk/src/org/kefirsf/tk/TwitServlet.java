@@ -5,7 +5,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +17,9 @@ import java.io.IOException;
  *
  * @author Vitalii Samolovskikh aka Kefir
  */
-@WebServlet(name = "TwitServlet", urlPatterns = "/twit")
 public class TwitServlet extends HttpServlet {
-    public static final int MAX_SIZE = 65535;
+    public static final int MAX_SIZE = 4095;
+    public static final String ERROR_MESSAGE = "errorMessage";
     private TextRenderer renderer = new TextRenderer();
 
     protected void doPost(
@@ -28,11 +27,11 @@ public class TwitServlet extends HttpServlet {
     ) throws ServletException, IOException {
         String message = request.getParameter("message");
         if (message == null || message.trim().isEmpty()) {
-            request.setAttribute("errorMessage", "Long twit can't be null or empty.");
+            request.setAttribute(ERROR_MESSAGE, "Long twit can't be blank.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } else if (message.length() > MAX_SIZE) {
             request.setAttribute(
-                    "errorMessage",
+                    ERROR_MESSAGE,
                     "The long twit is too long. Maximum is " + String.valueOf(MAX_SIZE) + " characters."
             );
             request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -60,7 +59,7 @@ public class TwitServlet extends HttpServlet {
             twitter.updateStatus(su);
             return true;
         } catch (TwitterException e) {
-            request.setAttribute("errorMessage", e.getMessage());
+            request.setAttribute(ERROR_MESSAGE, e.getMessage());
             return false;
         }
     }
