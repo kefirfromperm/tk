@@ -23,7 +23,7 @@ public class ConfigurationHolder {
         properties = new Properties();
         try {
             InputStream stream =
-                    getClass().getClassLoader().getResourceAsStream("classpath:configuration.properties");
+                    getClass().getClassLoader().getResourceAsStream("configuration.properties");
             try {
                 properties.load(stream);
             } finally {

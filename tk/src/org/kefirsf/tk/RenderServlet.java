@@ -35,7 +35,8 @@ public class RenderServlet extends HttpServlet {
             if (twitter != null) {
                 try {
                     StatusUpdate su = new StatusUpdate(
-                            message.substring(0, 100) + "... " + ConfigurationHolder.getInstance().get("server.url")
+                            message.substring(0, Math.min(30, message.length())) + "... "
+                                    + ConfigurationHolder.getInstance().get("server.url")
                     );
                     su.media("text.png", bais);
                     twitter.updateStatus(su);
