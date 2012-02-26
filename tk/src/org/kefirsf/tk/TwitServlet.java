@@ -39,6 +39,10 @@ public class TwitServlet extends HttpServlet {
             if (twitMessage(request, message)) {
                 response.sendRedirect("http://twitter.com");
             } else {
+                request.setAttribute(
+                        ERROR_MESSAGE,
+                        "Sorry. Your long twit can't be sent now. Try send later."
+                );
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         }
@@ -59,7 +63,6 @@ public class TwitServlet extends HttpServlet {
             twitter.updateStatus(su);
             return true;
         } catch (TwitterException e) {
-            request.setAttribute(ERROR_MESSAGE, e.getMessage());
             return false;
         }
     }

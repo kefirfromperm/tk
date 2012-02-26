@@ -23,6 +23,7 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/</url-pattern>
         <url-pattern>/twit</url-pattern>
+        <url-pattern>/index.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
