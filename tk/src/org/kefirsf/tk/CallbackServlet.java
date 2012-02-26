@@ -10,6 +10,8 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 /**
+ * OAuth callback servlet for twitter authorization.
+ *
  * @author Vitalii Samolovskikh aka Kefir
  */
 @WebServlet(name = "CallbackServlet", urlPatterns = {"/callback"})

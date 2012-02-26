@@ -4,10 +4,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,11 +25,8 @@ public class TextRenderer {
     public static final int STRING_HEIGHT = 20;
     public static final int STRING_LENGTH = 59;
 
-    public void render(String text, File file) throws IOException {
-        if (!file.exists() && !file.createNewFile()) {
-            throw new IOException("Can't create image file.");
-        }
-        ImageIO.write(render(text), "PNG", file);
+    public void render(String text, OutputStream out) throws IOException {
+        ImageIO.write(render(text), "PNG", out);
     }
 
     private RenderedImage render(String text) {
