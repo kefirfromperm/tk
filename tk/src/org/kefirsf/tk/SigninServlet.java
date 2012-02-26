@@ -22,9 +22,9 @@ public class SigninServlet extends HttpServlet {
         request.getSession().setAttribute("twitter", twitter);
         try {
             String callbackUrl = new StringBuilder()
-                            .append(ConfigurationHolder.getInstance().get("server.url"))
-                            .append("/callback")
-                            .toString();
+                    .append(ConfigurationHolder.getInstance().get("server.url"))
+                    .append("/callback")
+                    .toString();
             System.out.println(callbackUrl);
 
             RequestToken requestToken = twitter.getOAuthRequestToken(callbackUrl);

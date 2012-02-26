@@ -95,8 +95,8 @@ public class TextRenderer {
         int cur = 0;
         while (cur < string.length()) {
             Region region = null;
-            for(Region reg: regions){
-                if(reg.getStart() <= cur){
+            for (Region reg : regions) {
+                if (reg.getStart() <= cur) {
                     break;
                 }
 
@@ -105,8 +105,8 @@ public class TextRenderer {
                     break;
                 }
             }
-            
-            if (region!=null) {
+
+            if (region != null) {
                 if (region.isPunct()) {
                     if (region.getEnd() <= cur + STRING_LENGTH) {
                         list.add(string.substring(cur, region.getEnd()));

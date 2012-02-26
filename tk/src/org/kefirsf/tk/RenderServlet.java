@@ -16,6 +16,7 @@ import java.io.IOException;
 
 /**
  * Render image and twit it.
+ *
  * @author Vitalii Samolovskikh aka Kefir
  */
 @WebServlet(name = "RenderServlet", urlPatterns = "/render")
