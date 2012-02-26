@@ -1,0 +1,91 @@
+* {
+    font-family: sans-serif;
+    font-size: 12pt;
+}
+
+html, body {
+    height: 100%;
+    background-color: white;
+}
+
+div#content {
+    margin: auto;
+    padding: 10px;
+    background-color: #ddffdd;
+    width: 600px;
+}
+
+span#title {
+    font-size: 36pt;
+    font-weight: bold;
+    color: green;
+    display: block;
+    padding: 5px;
+}
+
+span#copy {
+    text-align: right;
+    color: gray;
+    display: block;
+    padding: 5px;
+}
+
+span#description {
+    color: black;
+    font-size: 10pt;
+    text-align: justify;
+    padding: 5px;
+}
+
+div#auth {
+    padding: 40px 150px;
+}
+
+div#auth a {
+    display: block;
+    background-color: #87cefa;
+    padding: 20px;
+    font-size: 24pt;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+div#form {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+label, textarea {
+    display: block;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+}
+
+input {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    background-color: #87cefa;
+    padding: 20px;
+    font-size: 24pt;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: solid blue 1px;
+}
+
+div.error {
+    border: solid red 1px;
+    color: red;
+    background-color: #faf0e6;
+    padding: 10px 20px;
+}

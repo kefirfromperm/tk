@@ -1,0 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div id="header">
+    <span id="title">Long Twit</span>
+    <span id="copy">&copy; 2012, Vitalii Samolovskikh &lt;<a href="mailto:kefir@perm.ru">kefir@perm.ru</a>&gt;</span>
+    <span id="description">It's application for posting long messages to twitter. Twit length can be more than 140 characters!</span>
+</div>
