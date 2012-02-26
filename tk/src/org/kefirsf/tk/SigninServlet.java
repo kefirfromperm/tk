@@ -21,13 +21,8 @@ public class SigninServlet extends HttpServlet {
         Twitter twitter = new TwitterFactory().getInstance();
         request.getSession().setAttribute("twitter", twitter);
         try {
-            String callbackUrl =
-                    new StringBuilder()
-                            .append("http://")
-                            .append(request.getServerName())
-                            .append(":")
-                            .append(request.getLocalPort())
-                            .append(request.getContextPath())
+            String callbackUrl = new StringBuilder()
+                            .append(ConfigurationHolder.getInstance().get("server.url"))
                             .append("/callback")
                             .toString();
             System.out.println(callbackUrl);

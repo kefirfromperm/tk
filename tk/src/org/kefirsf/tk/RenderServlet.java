@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * Render image and twit it.
  * @author Vitalii Samolovskikh aka Kefir
  */
 @WebServlet(name = "RenderServlet", urlPatterns = "/render")
@@ -33,7 +34,9 @@ public class RenderServlet extends HttpServlet {
             Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
             if (twitter != null) {
                 try {
-                    StatusUpdate su = new StatusUpdate(message.substring(0, 100) + "... ");
+                    StatusUpdate su = new StatusUpdate(
+                            message.substring(0, 100) + "... " + ConfigurationHolder.getInstance().get("server.url")
+                    );
                     su.media("text.png", bais);
                     twitter.updateStatus(su);
                 } catch (TwitterException e) {
