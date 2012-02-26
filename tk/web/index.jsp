@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Long twit</title>
+    <title>Long Twit</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css" title="Style">
     <link rel="stylesheet" type="text/css" href="/css/mobile.css" title="Style">
 </head>
@@ -13,7 +13,7 @@
     <div id="form">
         <form action="/twit" method="post">
             <label for="message">Your long twit</label>
-            <textarea rows="8" cols="60" id="message" name="message"></textarea>
+            <textarea rows="8" cols="60" id="message" name="message"><c:out value="${param.message}"/></textarea>
             <input type="submit" value="Twit"/>
         </form>
         <c:if test="${requestScope.errorMessage!=null}">
