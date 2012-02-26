@@ -64,4 +64,13 @@
         <servlet-name>SigninServlet</servlet-name>
         <url-pattern>/signin</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PingServlet</servlet-name>
+        <servlet-class>org.kefirsf.tk.PingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PingServlet</servlet-name>
+        <url-pattern>/ping</url-pattern>
+    </servlet-mapping>
 </web-app>
