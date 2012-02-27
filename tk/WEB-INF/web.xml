@@ -39,6 +39,16 @@
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
 
+    <!-- Success page -->
+    <servlet>
+        <servlet-name>success</servlet-name>
+        <jsp-file>/success.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>success</servlet-name>
+        <url-pattern>/success</url-pattern>
+    </servlet-mapping>
+
     <!-- Servlets -->
     <servlet>
         <servlet-name>TwitServlet</servlet-name>

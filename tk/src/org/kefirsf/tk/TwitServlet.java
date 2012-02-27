@@ -37,7 +37,7 @@ public class TwitServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
             if (twitMessage(request, message)) {
-                response.sendRedirect("http://twitter.com");
+                response.sendRedirect(response.encodeURL("/success"));
             } else {
                 request.setAttribute(
                         ERROR_MESSAGE,

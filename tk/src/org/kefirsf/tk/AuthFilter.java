@@ -29,7 +29,8 @@ public class AuthFilter implements Filter {
             chain.doFilter(req, resp);
         } else {
             if (resp instanceof HttpServletResponse) {
-                ((HttpServletResponse) resp).sendRedirect("/auth");
+                HttpServletResponse response = (HttpServletResponse) resp;
+                response.sendRedirect(response.encodeURL("/auth"));
             }
         }
     }
