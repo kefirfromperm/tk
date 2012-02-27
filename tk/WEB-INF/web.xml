@@ -15,6 +15,7 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
+<!--
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>org.kefirsf.tk.AuthFilter</filter-class>
@@ -26,6 +27,7 @@
         <url-pattern>/index.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+-->
 
     <!-- Auth page -->
     <servlet>

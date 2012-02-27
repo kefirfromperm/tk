@@ -41,7 +41,7 @@ div#auth {
     padding: 40px 150px;
 }
 
-div#auth a {
+.button {
     display: block;
     background-color: #87cefa;
     padding: 20px;
@@ -50,11 +50,18 @@ div#auth a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    border: solid blue 1px;
+    cursor: pointer;
+}
+
+.button.twit {
+    width: 100%;
 }
 
 div#form {
     margin-top: 20px;
     padding: 10px;
+    border: solid white 1px;
 }
 
 label, textarea {
@@ -67,20 +74,7 @@ label {
 
 textarea {
     width: 100%;
-}
-
-input {
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-    background-color: #87cefa;
-    padding: 20px;
-    font-size: 24pt;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    border: solid blue 1px;
+    margin-bottom: 20px;
 }
 
 div.error {
