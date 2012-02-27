@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Long Twit</title>
+    <title>Success &mdash; Long Twit</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css" title="Style">
     <link rel="stylesheet" type="text/css" href="/css/mobile.css" title="Style">
 </head>
