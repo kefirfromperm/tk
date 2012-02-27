@@ -41,6 +41,28 @@ div#auth {
     padding: 40px 150px;
 }
 
+div#success {
+    padding: 40px 40px;
+    text-align: center;
+}
+
+div#success a:first-child {
+    margin-right: 40px;
+}
+
+div#success a{
+    display: inline;
+}
+
+.message {
+    padding: 10px;
+    margin-top: 10px;
+    color: blue;
+    font-size: 14pt;
+    font-weight: bold;
+    border: solid blue 1px;
+}
+
 .button {
     display: block;
     background-color: #87cefa;
