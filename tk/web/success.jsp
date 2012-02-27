@@ -12,7 +12,7 @@
 <body>
 <div id="content">
     <%@include file="/WEB-INF/jsp/header.jspf"%>
-    <div class="message">Your long twit was posted successfully.</div>
+    <div class="message">Your long twit was posted successfully!</div>
     <div id="success">
         <a class="button" href="<c:url value="http://twitter.com"/>">Twitter</a>
         <a class="button" href="<c:url value="/"/>">Another twit?</a>

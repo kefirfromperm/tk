@@ -56,11 +56,12 @@ div#success a{
 
 .message {
     padding: 10px;
-    margin-top: 10px;
+    margin: 10px 5px;
     color: blue;
     font-size: 14pt;
     font-weight: bold;
     border: solid blue 1px;
+    text-align: center;
 }
 
 .button {
