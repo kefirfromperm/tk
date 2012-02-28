@@ -53,36 +53,42 @@ public class TextWrapper {
         }
 
         int cur = 0;
-        while (cur < string.length()) {
-            Region region = null;
-            for (Region reg : regions) {
-                if (reg.getStart() <= cur) {
-                    break;
+        int strLen = string.length();
+        while (cur < strLen) {
+            if (strLen - cur > STRING_LENGTH) {
+                Region region = null;
+                for (Region reg : regions) {
+                    if (reg.getStart() <= cur) {
+                        break;
+                    }
+
+                    if (reg.getStart() <= cur + STRING_LENGTH && !reg.isPunct()) {
+                        region = reg;
+                        break;
+                    }
+
+                    if (reg.getEnd() <= cur + STRING_LENGTH && reg.isPunct()) {
+                        region = reg;
+                        break;
+                    }
                 }
 
-                if (reg.getStart() <= cur + STRING_LENGTH && !reg.isPunct()) {
-                    region = reg;
-                    break;
-                }
-
-                if (reg.getEnd() <= cur + STRING_LENGTH && reg.isPunct()) {
-                    region = reg;
-                    break;
-                }
-            }
-
-            if (region != null) {
-                if (region.isPunct()) {
-                    list.add(string.substring(cur, region.getEnd()));
-                    cur = region.getEnd();
+                if (region != null) {
+                    if (region.isPunct()) {
+                        list.add(string.substring(cur, region.getEnd()));
+                        cur = region.getEnd();
+                    } else {
+                        list.add(string.substring(cur, region.getStart()));
+                        cur = region.getEnd();
+                    }
                 } else {
-                    list.add(string.substring(cur, region.getStart()));
-                    cur = region.getEnd();
+                    int end = Math.min(cur + STRING_LENGTH, strLen);
+                    list.add(string.substring(cur, end));
+                    cur = end;
                 }
             } else {
-                int end = Math.min(cur + STRING_LENGTH, string.length());
-                list.add(string.substring(cur, end));
-                cur = end;
+                list.add(string.substring(cur, strLen));
+                cur = strLen;
             }
         }
 
