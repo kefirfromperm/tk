@@ -5,70 +5,32 @@
 
 html, body {
     height: 100%;
-    background-color: white;
+    padding: 0;
+    margin: 0;
 }
 
 div#content {
-    margin: auto;
-    padding: 10px;
     background-color: #ddffdd;
-    width: 600px;
-}
-
-span#title {
-    font-size: 36pt;
-    font-weight: bold;
-    color: green;
-    display: block;
-    padding: 5px;
-}
-
-span#copy {
-    text-align: right;
-    color: gray;
-    display: block;
-    padding: 5px;
 }
 
 span#description {
     color: black;
-    font-size: 10pt;
-    text-align: justify;
-    padding: 5px;
-}
-
-div#auth {
-    padding: 40px 150px;
+    display: block;
 }
 
 div#success {
-    padding: 40px 40px;
     text-align: center;
 }
 
-div#success a:first-child {
-    margin-right: 40px;
-}
-
-div#success a{
-    display: inline;
-}
-
 .message {
-    padding: 10px;
-    margin: 10px 5px;
     color: blue;
-    font-size: 14pt;
     font-weight: bold;
     border: solid blue 1px;
     text-align: center;
 }
 
 .button {
-    display: block;
     background-color: #87cefa;
-    padding: 20px;
-    font-size: 24pt;
     text-align: center;
     text-decoration: none;
     color: white;
@@ -79,12 +41,11 @@ div#success a{
 
 .button.twit {
     width: 100%;
+    display: block;
 }
 
-div#form {
-    margin-top: 20px;
-    padding: 10px;
-    border: solid white 1px;
+div#auth .button{
+    display: block;
 }
 
 label, textarea {
@@ -96,14 +57,130 @@ label {
 }
 
 textarea {
-    width: 100%;
-    margin-bottom: 20px;
+    width: 98%;
 }
 
 div.error {
     border: solid red 1px;
     color: red;
     background-color: #faf0e6;
-    padding: 10px 20px;
-    margin-top: 10px;
 }
+
+/* Standalone computers and laptops*/
+@media screen and (min-width: 601px) {
+    html, body {
+        background-color: white;
+    }
+
+    div#content {
+        padding: 10px;
+        margin: 20px auto;
+        width: 600px;
+    }
+
+    span#title {
+        font-size: 36pt;
+        font-weight: bold;
+        color: green;
+        display: block;
+        padding: 5px;
+    }
+
+    span#copy {
+        text-align: right;
+        color: gray;
+        display: block;
+        padding: 5px;
+    }
+
+    span#description {
+        font-size: 10pt;
+        text-align: justify;
+        padding: 5px;
+    }
+
+    div#auth {
+        padding: 40px 150px;
+    }
+
+    div#success a:first-child {
+        margin-right: 40px;
+    }
+
+    div#success {
+        padding: 40px;
+    }
+
+    .message {
+        padding: 10px;
+        margin: 10px 5px;
+        font-size: 14pt;
+    }
+
+    .button {
+        padding: 20px;
+        font-size: 24pt;
+    }
+
+    div#form {
+        margin-top: 20px;
+        padding: 10px;
+        border: solid white 1px;
+    }
+
+    textarea {
+        margin-bottom: 20px;
+    }
+
+    div.error {
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 600px) {
+    html, body {
+        background-color: #ddffdd;
+    }
+
+    div#content {
+        margin: 10px auto;
+        width: 94%;
+    }
+
+    div#auth {
+        padding: 40px;
+    }
+
+    div#success a:first-child {
+        margin-right: 10px;
+    }
+
+    div#success {
+        padding: 10px;
+    }
+
+    .message {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .button {
+        padding: 10px;
+    }
+
+    div#form {
+        margin-top: 10px;
+    }
+
+    textarea {
+        margin-bottom: 10px;
+    }
+
+    div.error {
+        padding: 10px 10px;
+        margin-top: 10px;
+    }
+}
+

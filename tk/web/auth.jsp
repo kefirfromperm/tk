@@ -4,9 +4,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Auth &mdash; Long Twit</title>
+    <title>Authorization &mdash; Long Twit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
     <link rel="stylesheet" type="text/css" href="/css/main.css" title="Style">
-    <link rel="stylesheet" type="text/css" href="/css/mobile.css" title="Style">
 </head>
 <body>
 <div id="content">
