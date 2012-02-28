@@ -20,11 +20,13 @@ public class CallbackServlet extends HttpServlet {
         Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
         RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
         String verifier = request.getParameter("oauth_verifier");
-        try {
-            twitter.getOAuthAccessToken(requestToken, verifier);
-            request.getSession().removeAttribute("requestToken");
-        } catch (TwitterException e) {
-            throw new ServletException(e);
+        if (twitter != null && requestToken != null && verifier != null) {
+            try {
+                twitter.getOAuthAccessToken(requestToken, verifier);
+                request.getSession().removeAttribute("requestToken");
+            } catch (TwitterException e) {
+                throw new ServletException(e);
+            }
         }
         response.sendRedirect(response.encodeURL("/"));
     }

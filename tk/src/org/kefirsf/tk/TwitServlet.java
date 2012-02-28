@@ -2,7 +2,6 @@ package org.kefirsf.tk;
 
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,52 +17,87 @@ import java.io.IOException;
  * @author Vitalii Samolovskikh aka Kefir
  */
 public class TwitServlet extends HttpServlet {
-    public static final int MAX_SIZE = 4095;
     public static final String ERROR_MESSAGE = "errorMessage";
     private TextRenderer renderer = new TextRenderer();
+    private final TextWrapper wrapper = new TextWrapper();
 
     protected void doPost(
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
+        Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
+        if(twitter==null){
+            response.sendRedirect(response.encodeRedirectURL("/auth"));
+        }
+
         String message = request.getParameter("message");
         if (message == null || message.trim().equals("")) {
             request.setAttribute(ERROR_MESSAGE, "Long twit can't be blank.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-        } else if (message.length() > MAX_SIZE) {
+            return;
+        }
+
+        String text = message.trim();
+        if (text.length() > TextWrapper.MAX_SIZE) {
             request.setAttribute(
                     ERROR_MESSAGE,
-                    "The long twit is too long. Maximum is " + String.valueOf(MAX_SIZE) + " characters."
+                    "The long twit is too long. Maximum is " +
+                            String.valueOf(TextWrapper.MAX_SIZE) + " characters."
             );
             request.getRequestDispatcher("/index.jsp").forward(request, response);
+            return;
+        }
+
+        String[] strings = wrapper.wrap(text);
+        if(strings.length > TextWrapper.MAX_STRING_COUNT){
+            request.setAttribute(
+                    ERROR_MESSAGE,
+                    "The long twit has too many strings. Maximum is " +
+                            String.valueOf(TextWrapper.MAX_STRING_COUNT) + " strings."
+            );
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            return;
+        }
+
+        if (twitMessage(twitter, text, strings)) {
+            response.sendRedirect(response.encodeURL("/success"));
         } else {
-            if (twitMessage(request, message)) {
-                response.sendRedirect(response.encodeURL("/success"));
-            } else {
-                request.setAttribute(
-                        ERROR_MESSAGE,
-                        "Sorry. Your long twit can't be sent now. Try send later."
-                );
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }
+            request.setAttribute(
+                    ERROR_MESSAGE,
+                    "Sorry. Your long twit can't be sent now. Try send later."
+            );
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 
-    private boolean twitMessage(HttpServletRequest request, String message) throws IOException, ServletException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        renderer.render(message, baos);
-        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-
-        Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
+    /**
+     * Twit message
+     *
+     * @param twitter twitter object for user
+     * @param message user message
+     * @param strings wrapped message
+     * @return true if status was sent, false otherwise
+     */
+    private boolean twitMessage(Twitter twitter, String message, String[] strings) {
         try {
-            StatusUpdate su = new StatusUpdate(
-                    message.substring(0, Math.min(30, message.length())) + "... "
-                            + ConfigurationHolder.getInstance().get("server.url")
-            );
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            renderer.render(strings, baos);
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+
+            StatusUpdate su = new StatusUpdate(statusText(message));
             su.media("text.png", bais);
             twitter.updateStatus(su);
             return true;
-        } catch (TwitterException e) {
+        } catch (Exception e) {
             return false;
         }
+    }
+
+    private String statusText(String message) {
+        return annotate(message) + "... #lngtw "
+                + ConfigurationHolder.getInstance().get("server.url");
+    }
+
+    private String annotate(String message) {
+        return message.substring(0, Math.min(80, message.length())).trim();
     }
 }
