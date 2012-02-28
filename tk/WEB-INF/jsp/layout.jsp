@@ -6,8 +6,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css"/>" title="Style">
     <title><d:title default="Main"/> &mdash; Long Twit</title>
+    <script src="<c:url value="/js/jquery-1.7.1.min.js"/>"></script>
+    <script src="<c:url value="/js/lngtw.js"/>"></script>
     <d:head/>
 </head>
 <body>

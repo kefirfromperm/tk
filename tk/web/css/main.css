@@ -3,6 +3,12 @@
     font-size: 12pt;
 }
 
+/* JavaScript */
+.js {
+    display: none;
+}
+/* /JavaScript */
+
 html, body {
     height: 100%;
     padding: 0;
@@ -44,7 +50,7 @@ div#success {
     display: block;
 }
 
-div.onebutton a{
+div.onebutton a {
     display: block;
 }
 
@@ -58,6 +64,13 @@ label {
 
 textarea {
     width: 98%;
+}
+
+#counter{
+    padding: 0 20px 0 0;
+    text-align: right;
+    font-weight: bold;
+    color: gray;
 }
 
 div.error {
@@ -128,8 +141,8 @@ div.error {
         border: solid white 1px;
     }
 
-    textarea {
-        margin-bottom: 20px;
+    .button.twit{
+        margin-top: 20px;
     }
 
     div.error {
