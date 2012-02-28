@@ -44,7 +44,7 @@ div#success {
     display: block;
 }
 
-div#auth .button{
+div.onebutton a{
     display: block;
 }
 
@@ -99,8 +99,8 @@ div.error {
         padding: 5px;
     }
 
-    div#auth {
-        padding: 40px 150px;
+    div.onebutton {
+        padding: 40px 100px;
     }
 
     div#success a:first-child {
@@ -149,7 +149,7 @@ div.error {
         width: 94%;
     }
 
-    div#auth {
+    div.onebutton {
         padding: 40px;
     }
 

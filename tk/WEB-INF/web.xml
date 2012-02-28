@@ -30,11 +30,14 @@
     <!-- Sitemesh -->
     <filter>
         <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>sitemesh</filter-name>
-        <url-pattern>*</url-pattern>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>ERROR</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
     <!-- Auth page -->
@@ -93,15 +96,14 @@
         <servlet-name>PingServlet</servlet-name>
         <url-pattern>/ping</url-pattern>
     </servlet-mapping>
-
-    <jsp-config>
-        <taglib>
-            <taglib-uri>sitemesh-page</taglib-uri>
-            <taglib-location>/WEB-INF/tld/sitemesh-page.tld</taglib-location>
-        </taglib>
-        <taglib>
-            <taglib-uri>sitemesh-decorator</taglib-uri>
-            <taglib-location>/WEB-INF/tld/sitemesh-decorator.tld</taglib-location>
-        </taglib>
-    </jsp-config>
+    
+    <!-- Error pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/notfound.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
 </web-app>

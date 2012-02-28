@@ -9,7 +9,7 @@
     <tlib-version>1.0</tlib-version>
     <jsp-version>1.2</jsp-version>
     <short-name>sitemesh-decorator</short-name>
-    <uri>/sitemesh-decorator</uri>
+    <uri>http://www.opensymphony.com/sitemesh/decorator</uri>
     <display-name>SiteMesh Decorator Tags</display-name>
 
     <tag>
@@ -38,6 +38,27 @@
     <tag>
         <name>getProperty</name>
         <tag-class>com.opensymphony.module.sitemesh.taglib.decorator.PropertyTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>property</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>default</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>writeEntireProperty</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>extractProperty</name>
+        <tag-class>com.opensymphony.module.sitemesh.multipass.ExtractPropertyTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>property</name>
