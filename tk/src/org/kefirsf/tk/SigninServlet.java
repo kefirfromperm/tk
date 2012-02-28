@@ -22,6 +22,7 @@ public class SigninServlet extends HttpServlet {
         request.getSession().setAttribute("twitter", twitter);
         try {
 
+/*
             String callbackUrl = new StringBuilder()
                     .append("http://").append(request.getServerName())
                     .append(":").append(String.valueOf(request.getLocalPort()))
@@ -29,8 +30,9 @@ public class SigninServlet extends HttpServlet {
                     .append("/callback")
                     .toString();
             RequestToken requestToken = twitter.getOAuthRequestToken(callbackUrl);
+*/
 
-            //RequestToken requestToken = twitter.getOAuthRequestToken();
+            RequestToken requestToken = twitter.getOAuthRequestToken();
             request.getSession().setAttribute("requestToken", requestToken);
             response.sendRedirect(requestToken.getAuthenticationURL());
         } catch (TwitterException e) {
