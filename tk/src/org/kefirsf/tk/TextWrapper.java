@@ -47,7 +47,7 @@ public class TextWrapper {
         }
 
         // Punctuation
-        Matcher pm = Pattern.compile("\\p{P}").matcher(string);
+        Matcher pm = Pattern.compile("\\p{P}+").matcher(string);
         while (pm.find()) {
             regions.add(new Region(pm.start(), pm.end(), true));
         }
@@ -60,7 +60,12 @@ public class TextWrapper {
                     break;
                 }
 
-                if (reg.getStart() <= cur + STRING_LENGTH) {
+                if (reg.getStart() <= cur + STRING_LENGTH && !reg.isPunct()) {
+                    region = reg;
+                    break;
+                }
+
+                if (reg.getEnd() <= cur + STRING_LENGTH && reg.isPunct()) {
                     region = reg;
                     break;
                 }
@@ -68,13 +73,8 @@ public class TextWrapper {
 
             if (region != null) {
                 if (region.isPunct()) {
-                    if (region.getEnd() <= cur + STRING_LENGTH) {
-                        list.add(string.substring(cur, region.getEnd()));
-                        cur = region.getEnd();
-                    } else {
-                        list.add(string.substring(cur, region.getStart()));
-                        cur = region.getStart();
-                    }
+                    list.add(string.substring(cur, region.getEnd()));
+                    cur = region.getEnd();
                 } else {
                     list.add(string.substring(cur, region.getStart()));
                     cur = region.getEnd();
