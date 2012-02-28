@@ -29,6 +29,16 @@
 
     <!-- Sitemesh -->
     <filter>
+        <filter-name>ClearSitemeshAppliedOnceFilter</filter-name>
+        <filter-class>org.kefirsf.tk.ClearSitemeshAppliedOnceFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ClearSitemeshAppliedOnceFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <filter>
         <filter-name>sitemesh</filter-name>
         <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
     </filter>
