@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-           version="2.5">
+         version="2.5">
     <!-- Filters-->
     <filter>
         <filter-name>EncodingFilter</filter-name>
@@ -25,6 +25,16 @@
         <url-pattern>/twit</url-pattern>
         <url-pattern>/index.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <!-- Sitemesh -->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>*</url-pattern>
     </filter-mapping>
 
     <!-- Auth page -->
@@ -83,4 +93,15 @@
         <servlet-name>PingServlet</servlet-name>
         <url-pattern>/ping</url-pattern>
     </servlet-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>sitemesh-page</taglib-uri>
+            <taglib-location>/WEB-INF/tld/sitemesh-page.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>sitemesh-decorator</taglib-uri>
+            <taglib-location>/WEB-INF/tld/sitemesh-decorator.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 </web-app>
