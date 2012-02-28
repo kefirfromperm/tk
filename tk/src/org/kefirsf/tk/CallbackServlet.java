@@ -28,6 +28,6 @@ public class CallbackServlet extends HttpServlet {
                 throw new ServletException(e);
             }
         }
-        response.sendRedirect(response.encodeURL("/"));
+        response.sendRedirect(response.encodeRedirectURL("/"));
     }
 }

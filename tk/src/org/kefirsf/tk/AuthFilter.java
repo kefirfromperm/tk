@@ -30,7 +30,7 @@ public class AuthFilter implements Filter {
         } else {
             if (resp instanceof HttpServletResponse) {
                 HttpServletResponse response = (HttpServletResponse) resp;
-                response.sendRedirect(response.encodeURL("/auth"));
+                response.sendRedirect(response.encodeRedirectURL("/auth"));
             }
         }
     }

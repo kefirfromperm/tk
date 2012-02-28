@@ -59,7 +59,7 @@ public class TwitServlet extends HttpServlet {
         }
 
         if (twitMessage(twitter, text, strings)) {
-            response.sendRedirect(response.encodeURL("/success"));
+            response.sendRedirect(response.encodeRedirectURL("/success"));
         } else {
             request.setAttribute(
                     ERROR_MESSAGE,
