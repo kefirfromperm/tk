@@ -21,9 +21,7 @@
     </filter>
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
-        <url-pattern>/</url-pattern>
-        <url-pattern>/twit</url-pattern>
-        <url-pattern>/index.jsp</url-pattern>
+        <servlet-name>TwitServlet</servlet-name>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
@@ -50,20 +48,20 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
-    <!-- Auth page -->
+    <!-- Index page-->
     <servlet>
-        <servlet-name>auth</servlet-name>
-        <jsp-file>/auth.jsp</jsp-file>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>org.kefirsf.tk.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>auth</servlet-name>
-        <url-pattern>/auth</url-pattern>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- Success page -->
     <servlet>
         <servlet-name>success</servlet-name>
-        <jsp-file>/success.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsp/success.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>success</servlet-name>
@@ -106,7 +104,7 @@
         <servlet-name>PingServlet</servlet-name>
         <url-pattern>/ping</url-pattern>
     </servlet-mapping>
-    
+
     <!-- Error pages -->
     <error-page>
         <error-code>404</error-code>

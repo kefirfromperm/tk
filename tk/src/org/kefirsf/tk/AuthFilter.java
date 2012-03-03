@@ -25,12 +25,12 @@ public class AuthFilter implements Filter {
             }
         }
 
-        if (twitter != null) {
+        if (TwitterUtils.validate(twitter)) {
             chain.doFilter(req, resp);
         } else {
             if (resp instanceof HttpServletResponse) {
                 HttpServletResponse response = (HttpServletResponse) resp;
-                response.sendRedirect(response.encodeRedirectURL("/auth"));
+                response.sendRedirect(response.encodeRedirectURL("/"));
             }
         }
     }

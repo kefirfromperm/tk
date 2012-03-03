@@ -25,14 +25,11 @@ public class TwitServlet extends HttpServlet {
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
         Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
-        if(twitter==null){
-            response.sendRedirect(response.encodeRedirectURL("/auth"));
-        }
 
         String message = request.getParameter("message");
         if (message == null || message.trim().equals("")) {
             request.setAttribute(ERROR_MESSAGE, "Long twit can't be blank.");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
@@ -43,7 +40,7 @@ public class TwitServlet extends HttpServlet {
                     "The long twit is too long. Maximum is " +
                             String.valueOf(TextWrapper.MAX_SIZE) + " characters."
             );
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
@@ -54,7 +51,7 @@ public class TwitServlet extends HttpServlet {
                     "The long twit has too many strings. Maximum is " +
                             String.valueOf(TextWrapper.MAX_STRING_COUNT) + " strings."
             );
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
@@ -65,7 +62,7 @@ public class TwitServlet extends HttpServlet {
                     ERROR_MESSAGE,
                     "Sorry. Your long twit can't be sent now. Try send later."
             );
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
         }
     }
 
