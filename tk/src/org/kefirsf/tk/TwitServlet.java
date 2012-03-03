@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Render image and twit it.
@@ -24,33 +25,27 @@ public class TwitServlet extends HttpServlet {
     protected void doPost(
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
+        ResourceBundle bundle = ResourceBundle.getBundle("org.kefirsf.tk.i18n.message", request.getLocale());
+
         Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 
         String message = request.getParameter("message");
         if (message == null || message.trim().equals("")) {
-            request.setAttribute(ERROR_MESSAGE, "Long twit can't be blank.");
+            request.setAttribute(ERROR_MESSAGE, bundle.getString("message.error.blank"));
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
         String text = message.trim();
         if (text.length() > TextWrapper.MAX_SIZE) {
-            request.setAttribute(
-                    ERROR_MESSAGE,
-                    "The long twit is too long. Maximum is " +
-                            String.valueOf(TextWrapper.MAX_SIZE) + " characters."
-            );
+            request.setAttribute(ERROR_MESSAGE,bundle.getString("message.error.long"));
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
         String[] strings = wrapper.wrap(text);
         if (strings.length > TextWrapper.MAX_STRING_COUNT) {
-            request.setAttribute(
-                    ERROR_MESSAGE,
-                    "The long twit has too many strings. Maximum is " +
-                            String.valueOf(TextWrapper.MAX_STRING_COUNT) + " strings."
-            );
+            request.setAttribute(ERROR_MESSAGE, bundle.getString("message.error.too.many.strings"));
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
@@ -58,10 +53,7 @@ public class TwitServlet extends HttpServlet {
         if (twitMessage(twitter, text, strings)) {
             response.sendRedirect(request.getContextPath() + "/success");
         } else {
-            request.setAttribute(
-                    ERROR_MESSAGE,
-                    "Sorry. Your long twit can't be sent now. Try send later."
-            );
+            request.setAttribute(ERROR_MESSAGE, bundle.getString("message.error.twitter"));
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
         }
     }
