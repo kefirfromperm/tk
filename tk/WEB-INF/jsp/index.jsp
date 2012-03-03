@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="form">
-    <form action="/twit" method="post">
+    <form action="<c:url value="/twit"/>" method="post">
         <label for="message">Your long twit</label>
         <textarea rows="8" cols="60" id="message" name="message"><c:out value="${param.message}"/></textarea>
         <div id="counter" class="js">0</div>

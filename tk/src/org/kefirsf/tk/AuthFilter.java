@@ -16,21 +16,20 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        Twitter twitter = null;
-        if (req instanceof HttpServletRequest) {
+        if (req instanceof HttpServletRequest && resp instanceof HttpServletResponse) {
             HttpServletRequest request = (HttpServletRequest) req;
+            HttpServletResponse response = (HttpServletResponse) resp;
+
+            Twitter twitter = null;
             HttpSession session = request.getSession();
             if (session != null) {
                 twitter = (Twitter) session.getAttribute("twitter");
             }
-        }
 
-        if (TwitterUtils.validate(twitter)) {
-            chain.doFilter(req, resp);
-        } else {
-            if (resp instanceof HttpServletResponse) {
-                HttpServletResponse response = (HttpServletResponse) resp;
-                response.sendRedirect(response.encodeRedirectURL("/"));
+            if (TwitterUtils.validate(twitter)) {
+                chain.doFilter(request, response);
+            } else {
+                response.sendRedirect(request.getContextPath()+ "/");
             }
         }
     }

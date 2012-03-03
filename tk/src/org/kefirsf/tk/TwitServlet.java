@@ -45,7 +45,7 @@ public class TwitServlet extends HttpServlet {
         }
 
         String[] strings = wrapper.wrap(text);
-        if(strings.length > TextWrapper.MAX_STRING_COUNT){
+        if (strings.length > TextWrapper.MAX_STRING_COUNT) {
             request.setAttribute(
                     ERROR_MESSAGE,
                     "The long twit has too many strings. Maximum is " +
@@ -56,7 +56,7 @@ public class TwitServlet extends HttpServlet {
         }
 
         if (twitMessage(twitter, text, strings)) {
-            response.sendRedirect(response.encodeRedirectURL("/success"));
+            response.sendRedirect(request.getContextPath() + "/success");
         } else {
             request.setAttribute(
                     ERROR_MESSAGE,
