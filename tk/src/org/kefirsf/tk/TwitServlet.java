@@ -79,8 +79,8 @@ public class TwitServlet extends HttpServlet {
     }
 
     private String statusText(String message) {
-        return annotate(message) + "... #lngtw "
-                + ConfigurationHolder.getInstance().get("server.url");
+        ConfigurationHolder conf = ConfigurationHolder.getInstance();
+        return annotate(message) + "... " + conf.get("app.tag") + " " + conf.get("server.url");
     }
 
     private String annotate(String message) {

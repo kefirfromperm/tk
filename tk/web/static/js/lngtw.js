@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('.nojs').hide();
 
     // Keep session
-    $(document).everyTime(10000, function(){
+    $(document).everyTime(300000, function(){
         $.get('/ping');
     });
 
