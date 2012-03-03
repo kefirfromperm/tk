@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 /**
  * Render image and twit it.
@@ -25,27 +24,25 @@ public class TwitServlet extends HttpServlet {
     protected void doPost(
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
-        ResourceBundle bundle = ResourceBundle.getBundle("org.kefirsf.tk.i18n.message", request.getLocale());
-
         Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
 
         String message = request.getParameter("message");
         if (message == null || message.trim().equals("")) {
-            request.setAttribute(ERROR_MESSAGE, bundle.getString("message.error.blank"));
+            request.setAttribute(ERROR_MESSAGE, "message.error.blank");
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
         String text = message.trim();
         if (text.length() > TextWrapper.MAX_SIZE) {
-            request.setAttribute(ERROR_MESSAGE,bundle.getString("message.error.long"));
+            request.setAttribute(ERROR_MESSAGE, "message.error.long");
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
 
         String[] strings = wrapper.wrap(text);
         if (strings.length > TextWrapper.MAX_STRING_COUNT) {
-            request.setAttribute(ERROR_MESSAGE, bundle.getString("message.error.too.many.strings"));
+            request.setAttribute(ERROR_MESSAGE, "message.error.too.many.strings");
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
             return;
         }
@@ -53,7 +50,7 @@ public class TwitServlet extends HttpServlet {
         if (twitMessage(twitter, text, strings)) {
             response.sendRedirect(request.getContextPath() + "/success");
         } else {
-            request.setAttribute(ERROR_MESSAGE, bundle.getString("message.error.twitter"));
+            request.setAttribute(ERROR_MESSAGE, "message.error.twitter");
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
         }
     }

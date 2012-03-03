@@ -14,7 +14,7 @@
         <input class="button twit" type="submit" value="<fmt:message key="button.twit"/>"/>
     </form>
     <c:if test="${requestScope.errorMessage!=null}">
-        <div class="error"><c:out value="${requestScope.errorMessage}"/></div>
+        <div class="error"><fmt:message key="${requestScope.errorMessage}"/></div>
     </c:if>
 </div>
 </body>

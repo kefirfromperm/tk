@@ -9,6 +9,10 @@
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>org.kefirsf.tk.i18n.message</param-value>
     </context-param>
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+        <param-value>en_US</param-value>
+    </context-param>
     
     <!-- Filters-->
     <filter>
