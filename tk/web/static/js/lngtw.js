@@ -1,7 +1,14 @@
 $(document).ready(function () {
+    // Show JS-objects and hide non JS objects
     $('.js').show();
     $('.nojs').hide();
 
+    // Keep session
+    $(document).everyTime(10000, function(){
+        $.get('/ping');
+    });
+
+    // Initialize counter
     messageEventListener();
     $('#message').change(messageEventListener);
     $('#message').keyup(messageEventListener);
