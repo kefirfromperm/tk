@@ -11,7 +11,7 @@
     </context-param>
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
-        <param-value>en_US</param-value>
+        <param-value>en</param-value>
     </context-param>
     
     <!-- Filters-->
