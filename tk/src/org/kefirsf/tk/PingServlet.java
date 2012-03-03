@@ -16,6 +16,7 @@ public class PingServlet extends HttpServlet {
             HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
         response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("text/plain");
         response.getWriter().write("I'm OK!");
         response.flushBuffer();
     }
