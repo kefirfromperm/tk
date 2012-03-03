@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
+    <!-- Internationalization -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>org.kefirsf.tk.i18n.message</param-value>
+    </context-param>
+    
     <!-- Filters-->
     <filter>
         <filter-name>EncodingFilter</filter-name>

@@ -1,14 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Success</title>
+    <title><fmt:message key="title.success"/></title>
 </head>
 <body>
-<div class="message">Your long twit was posted successfully!</div>
+<div class="message"><fmt:message key="message.success"/></div>
 <div id="success">
-    <a class="button" href="<c:url value="http://twitter.com"/>">Twitter</a>
-    <a class="button" href="<c:url value="/"/>">Another twit?</a>
+    <a class="button" href="<c:url value="http://twitter.com"/>"><fmt:message key="button.twitter"/></a>
+    <a class="button" href="<c:url value="/"/>"><fmt:message key="button.another"/></a>
 </div>
 </body>
 </html>

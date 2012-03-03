@@ -1,2 +1,2 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="onebutton"><a class="button" href="<c:url value="/"/>">Go to Main page!</a></div>
+<div class="onebutton"><a class="button" href="<c:url value="/"/>"><fmt:message key="button.goto.main"/></a></div>
