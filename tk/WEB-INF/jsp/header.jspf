@@ -1,7 +1,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="header">
-    <span id="title">Long Twit</span>
+    <span id="title"><a href="<c:url value="/"/>">Long Twit</a></span>
     <span id="copy">&copy; <fmt:message key="app.copy"/> &lt;<a href="mailto:kefir@perm.ru">kefir@perm.ru</a>&gt;</span>
     <span id="description"><fmt:message key="app.description"/></span>
 </div>

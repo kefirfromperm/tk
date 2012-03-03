@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/main.css"/>" title="Style">
     <title><d:title default="Main"/> &mdash; Long Twit</title>
     <script src="<c:url value="/static/js/jquery-1.7.1.min.js"/>"></script>
@@ -16,9 +16,13 @@
 </head>
 <body>
 <div id="content">
-    <%@include file="/WEB-INF/jsp/header.jspf"%>
+    <%@include file="/WEB-INF/jsp/header.jspf" %>
     <d:body/>
+    <div id="lang">
+        <a href="<c:url value="/?lang=en"/>">en</a>
+        <a href="<c:url value="/?lang=ru"/>">ру</a>
+    </div>
 </div>
-<%@ include file="/WEB-INF/jsp/yandex.jspf"%>
+<%@ include file="/WEB-INF/jsp/yandex.jspf" %>
 </body>
 </html>

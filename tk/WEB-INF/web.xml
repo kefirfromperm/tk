@@ -14,7 +14,7 @@
         <param-value>en</param-value>
     </context-param>
     
-    <!-- Filters-->
+    <!-- Request encoding must be UTF-8!-->
     <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>org.kefirsf.tk.EncodingFilter</filter-class>
@@ -25,6 +25,18 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
+    <!-- Change locale -->
+    <filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>org.kefirsf.tk.LocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <!-- Authorization -->
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>org.kefirsf.tk.AuthFilter</filter-class>

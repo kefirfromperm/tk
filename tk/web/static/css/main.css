@@ -80,6 +80,17 @@ div.error {
     background-color: #faf0e6;
 }
 
+div#lang{
+    padding: 10px 10px 5px;
+    text-align: right;
+    font-size: 10pt;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+}
+
 /* Standalone computers and laptops*/
 @media screen and (min-width: 601px) {
     html, body {
@@ -92,12 +103,14 @@ div.error {
         width: 600px;
     }
 
-    span#title {
+    span#title{
+        display: block;
+        padding: 5px;
+    }
+    span#title, span#title * {
         font-size: 36pt;
         font-weight: bold;
         color: green;
-        display: block;
-        padding: 5px;
     }
 
     span#copy {
