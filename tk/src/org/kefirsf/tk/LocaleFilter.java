@@ -31,10 +31,12 @@ public class LocaleFilter implements Filter {
                 response.addCookie(cookie);
             } else {
                 Cookie[] cookies = request.getCookies();
-                for(Cookie cookie:cookies){
-                    if(LOCALE_COOKIE.equals(cookie.getName()) && cookie.getValue()!=null){
-                        Config.set(request, Config.FMT_LOCALE, new Locale(cookie.getValue()));
-                        break;
+                if (cookies != null) {
+                    for (Cookie cookie : cookies) {
+                        if (LOCALE_COOKIE.equals(cookie.getName()) && cookie.getValue() != null) {
+                            Config.set(request, Config.FMT_LOCALE, new Locale(cookie.getValue()));
+                            break;
+                        }
                     }
                 }
             }
