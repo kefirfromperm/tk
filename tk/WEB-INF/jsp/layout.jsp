@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/main.css"/>" title="Style">
-    <title><d:title default="Main"/> &mdash; Long Twit</title>
+    <title>Long Twit</title>
     <script src="<c:url value="/static/js/jquery-1.7.1.min.js"/>"></script>
     <script src="<c:url value="/static/js/jquery.timers-1.2.js"/>"></script>
     <script src="<c:url value="/static/js/lngtw.js"/>"></script>
