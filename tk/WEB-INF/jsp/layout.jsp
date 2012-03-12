@@ -7,6 +7,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+    <meta name="description" content="The service for posting twits longer than 140 characters."/>
+    <meta name="keywords" content="twitter,twit,tweet,140,long,longer"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/main.css"/>" title="Style">
     <title>Long Twit</title>
     <script src="<c:url value="/static/js/jquery-1.7.1.min.js"/>"></script>
