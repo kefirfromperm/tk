@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /static
+Disallow: /twit
+Disallow: /callback
+Disallow: /signin
+Disallow: /ping
