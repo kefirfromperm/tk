@@ -21,8 +21,9 @@
     <%@include file="/WEB-INF/jsp/header.jspf" %>
     <d:body/>
     <div id="lang">
-        <a href="<c:url value="/"/>?lang=en">en</a>
-        <a href="<c:url value="/"/>?lang=ru">ру</a>
+        <a href="<c:url value="/"/>?lang=en" title="English">eng</a>
+        <a href="<c:url value="/"/>?lang=ru" title="Русский">рус</a>
+        <a href="<c:url value="/"/>?lang=uk" title="Українська">укр</a>
     </div>
 </div>
 <%@ include file="/WEB-INF/jsp/yandex.jspf" %>
