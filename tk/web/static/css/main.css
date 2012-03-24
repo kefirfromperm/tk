@@ -1,6 +1,5 @@
 * {
     font-family: sans-serif;
-    font-size: 12pt;
 }
 
 /* JavaScript */
@@ -12,6 +11,7 @@
 html, body {
     padding: 0;
     margin: 0;
+    font-size: 12pt;
 }
 
 div#content {
@@ -80,14 +80,18 @@ div.error {
 }
 
 div#lang{
-    padding: 10px 10px 5px;
+    padding: 10px;
     text-align: right;
-    font-size: 10pt;
 }
 
 a {
     text-decoration: none;
     color: green;
+}
+
+div#copy {
+    text-align: center;
+    color: gray;
 }
 
 /* Standalone computers and laptops*/
@@ -110,13 +114,6 @@ a {
         font-size: 36pt;
         font-weight: bold;
         color: green;
-    }
-
-    span#copy {
-        text-align: right;
-        color: gray;
-        display: block;
-        padding: 5px;
     }
 
     span#description {
@@ -161,6 +158,10 @@ a {
     div.error {
         padding: 10px 20px;
         margin-top: 20px;
+    }
+
+    div#lang, div#copy{
+        font-size: 10pt;
     }
 }
 

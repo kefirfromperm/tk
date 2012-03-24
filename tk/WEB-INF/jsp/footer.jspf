@@ -1,0 +1,9 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div id="lang">
+    <a href="<c:url value="/"/>?lang=en" title="English">eng</a>
+    <a href="<c:url value="/"/>?lang=es" title="Español">esp</a>
+    <a href="<c:url value="/"/>?lang=ru" title="Русский">рус</a>
+    <a href="<c:url value="/"/>?lang=uk" title="Українська">укр</a>
+</div>
+<div id="copy">Long Twit &copy; <fmt:message key="app.copy"/> &lt;<a href="mailto:kefir@perm.ru">kefir@perm.ru</a>&gt;</div>
