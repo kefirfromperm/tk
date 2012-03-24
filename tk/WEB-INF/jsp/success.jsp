@@ -4,7 +4,13 @@
 <html>
 <head></head>
 <body>
-<div class="message"><fmt:message key="message.success"/></div>
+<div class="message">
+    <fmt:message key="message.success"/>
+    <c:if test="${requestScope.flash.statusUrl!=null}">
+        <br/>
+        <a href="<c:out value="${requestScope.flash.statusUrl}"/>" target="_blank"><c:out value="${requestScope.flash.statusUrl}"/></a>
+    </c:if>
+</div>
 <div id="success">
     <a class="button" href="<c:url value="http://twitter.com"/>"><fmt:message key="button.twitter"/></a>
     <a class="button" href="<c:url value="/"/>"><fmt:message key="button.another"/></a>

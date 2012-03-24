@@ -1,5 +1,6 @@
 package org.kefirsf.tk;
 
+import twitter4j.Status;
 import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.Map;
 
 /**
  * Render image and twit it.
@@ -47,7 +50,19 @@ public class TwitServlet extends HttpServlet {
             return;
         }
 
-        if (twitMessage(twitter, text, strings)) {
+        Status status = twitMessage(twitter, text, strings);
+        if (status!=null) {
+            @SuppressWarnings("unchecked")
+            Map<String, Object> flash = (Map<String, Object>) request.getAttribute(FlashFilter.FLASH);
+            if(flash!=null){
+                String url = MessageFormat.format(
+                        "https://twitter.com/#!/{0}/status/{1,number,0}",
+                        status.getUser().getScreenName(),
+                        status.getId()
+                );
+                flash.put("statusUrl", url);
+            }
+            
             response.sendRedirect(request.getContextPath() + "/success");
         } else {
             request.setAttribute(ERROR_MESSAGE, "message.error.twitter");
@@ -58,12 +73,13 @@ public class TwitServlet extends HttpServlet {
     /**
      * Twit message
      *
+     *
      * @param twitter twitter object for user
      * @param message user message
      * @param strings wrapped message
      * @return true if status was sent, false otherwise
      */
-    private boolean twitMessage(Twitter twitter, String message, String[] strings) {
+    private Status twitMessage(Twitter twitter, String message, String[] strings) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             renderer.render(strings, baos);
@@ -71,10 +87,9 @@ public class TwitServlet extends HttpServlet {
 
             StatusUpdate su = new StatusUpdate(statusText(message));
             su.media("text.png", bais);
-            twitter.updateStatus(su);
-            return true;
+            return twitter.updateStatus(su);
         } catch (Exception e) {
-            return false;
+            return null;
         }
     }
 

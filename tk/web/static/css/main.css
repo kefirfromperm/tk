@@ -34,6 +34,11 @@ div#success {
     text-align: center;
 }
 
+.message a{
+    font-weight: normal;
+    font-size: 12pt;
+}
+
 .button {
     background-color: #87cefa;
     text-align: center;
@@ -84,7 +89,7 @@ div#lang{
     text-align: right;
 }
 
-a {
+a, .message a {
     text-decoration: none;
     color: green;
 }
@@ -131,7 +136,7 @@ div#copy {
     }
 
     div#success {
-        padding: 40px;
+        padding: 40px 0;
     }
 
     .message {
@@ -185,7 +190,7 @@ div#copy {
     }
 
     div#success {
-        padding: 10px;
+        padding: 10px 0;
     }
 
     .message {
