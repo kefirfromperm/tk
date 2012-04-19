@@ -4,3 +4,4 @@ Disallow: /twit
 Disallow: /callback
 Disallow: /signin
 Disallow: /ping
+Disallow: /oscommerce/
