@@ -84,9 +84,16 @@ div.error {
     background-color: #faf0e6;
 }
 
+div#twitter{
+    padding: 10px;
+    text-align: left;
+    display: inline-block;
+}
+
 div#lang{
     padding: 10px;
     text-align: right;
+    float:right;
 }
 
 a, .message a {
