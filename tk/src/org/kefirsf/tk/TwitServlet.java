@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,7 +51,21 @@ public class TwitServlet extends HttpServlet {
             return;
         }
 
-        Status status = twitMessage(twitter, text, strings);
+        Color fontColor = Color.black;
+        try{
+            fontColor = Color.decode(request.getParameter("font-color"));
+        }catch (NumberFormatException e){
+            // Nothing!
+        }
+
+        Color backgroundColor = Color.white;
+        try{
+            backgroundColor = Color.decode(request.getParameter("background-color"));
+        }catch (NumberFormatException e){
+            // Nothing!
+        }
+
+        Status status = twitMessage(twitter, text, strings, fontColor, backgroundColor);
         if (status!=null) {
             @SuppressWarnings("unchecked")
             Map<String, Object> flash = (Map<String, Object>) request.getAttribute(FlashFilter.FLASH);
@@ -74,15 +89,18 @@ public class TwitServlet extends HttpServlet {
      * Twit message
      *
      *
+     *
      * @param twitter twitter object for user
      * @param message user message
      * @param strings wrapped message
+     * @param fontColor font color
+     * @param backgroundColor background color
      * @return true if status was sent, false otherwise
      */
-    private Status twitMessage(Twitter twitter, String message, String[] strings) {
+    private Status twitMessage(Twitter twitter, String message, String[] strings, Color fontColor, Color backgroundColor) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            renderer.render(strings, baos);
+            renderer.render(strings, baos, fontColor, backgroundColor);
             ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
             StatusUpdate su = new StatusUpdate(statusText(message));

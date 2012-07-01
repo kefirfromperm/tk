@@ -14,29 +14,30 @@ import java.io.OutputStream;
  */
 public class TextRenderer {
 
-    public static final int WIDTH = 435;
-    public static final int PADDING = 10;
-    public static final int STRING_HEIGHT = 20;
+    public static final int WIDTH = 870;
+    public static final int PADDING = 20;
+    public static final int STRING_HEIGHT = 40;
+    public static final int FONT_SIZE = 36;
 
 
-    public void render(String[] strings, OutputStream out) throws IOException {
-        ImageIO.write(render(strings), "PNG", out);
+    public void render(String[] strings, OutputStream out, Color fontColor, Color backgroundColor) throws IOException {
+        ImageIO.write(render(strings, fontColor, backgroundColor), "PNG", out);
     }
 
-    private RenderedImage render(String[] strings) {
+    private RenderedImage render(String[] strings, Color fontColor, Color backgroundColor) {
         // Height
         int height = PADDING + strings.length * STRING_HEIGHT;
 
-        BufferedImage image = new BufferedImage(WIDTH, height, BufferedImage.TYPE_BYTE_GRAY);
+        BufferedImage image = new BufferedImage(WIDTH, height, BufferedImage.TYPE_INT_RGB);
         Graphics graphics = image.getGraphics();
 
         // Fill image by white color
-        graphics.setColor(Color.WHITE);
+        graphics.setColor(backgroundColor);
         graphics.fillRect(0, 0, WIDTH, height);
 
         // Write text
-        graphics.setFont(new Font("monospaced", Font.PLAIN, 12));
-        graphics.setColor(Color.BLACK);
+        graphics.setFont(new Font("monospaced", Font.PLAIN, FONT_SIZE));
+        graphics.setColor(fontColor);
         int index = 0;
         for (String str : strings) {
             index++;
@@ -46,5 +47,4 @@ public class TextRenderer {
 
         return image;
     }
-
 }

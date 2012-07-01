@@ -8,9 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextWrapper {
-    public static final int STRING_LENGTH = 59;
+    public static final int STRING_LENGTH = 37;
     public static final int MAX_STRING_COUNT = 34;
-    public static final int MAX_SIZE = 2000;
+    public static final int MAX_SIZE = 1300;
 
     public TextWrapper() {
     }

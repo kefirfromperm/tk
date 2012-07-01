@@ -106,6 +106,44 @@ div#copy {
     color: gray;
 }
 
+/* Color selector */
+.color-selector label{
+    display: inline-block;
+    width: 200px;
+}
+
+.color-selector input{
+    display: none;
+}
+
+.color-selector .radio-buttons {
+    display: inline-block;
+    margin: 0;
+}
+
+.color-selector .radio-buttons label{
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+}
+
+.color-selector label.white{background-color: white;}
+.color-selector label.black{background-color: black;}
+.color-selector label.blue{background-color: blue;}
+.color-selector label.cyan{background-color: #00ffff;}
+.color-selector label.magenta{background-color: #ff00ff;}
+.color-selector label.orange{background-color: orange;}
+.color-selector label.red{background-color: red;}
+.color-selector label.pink{background-color: pink;}
+.color-selector label.gray{background-color: gray;}
+.color-selector label.green{background-color: green;}
+.color-selector label.yellow{background-color: yellow;}
+
+.color-selector input[type="radio"]:checked+label{
+    margin: 0;
+    border: black solid 2px;
+}
+
 /* Standalone computers and laptops*/
 @media screen and (min-width: 601px) {
     html, body {
