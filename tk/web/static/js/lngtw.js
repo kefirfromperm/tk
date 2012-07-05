@@ -22,6 +22,15 @@ $(document).ready(function () {
         $('#message').css('background-color', $('input[name="background-color"]:checked').val());
     });
 
+    // For iPhone
+    var deviceAgent = navigator.userAgent.toLowerCase();
+    var iOS = deviceAgent.match(/(iphone|ipod|ipad)/);
+    if (iOS) {
+        $('label').click(function (event) {
+            $('#' + $(event.target).attr('for')).attr('checked', true).change();
+        });
+    }
+
     // Init twitter widget
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 });
