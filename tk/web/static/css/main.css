@@ -84,8 +84,8 @@ div.error {
     background-color: #faf0e6;
 }
 
-div#twitter{
-    padding: 10px;
+div#twitter, div#paypal{
+    padding: 10px 0 10px 10px;
     text-align: left;
     display: inline-block;
 }
