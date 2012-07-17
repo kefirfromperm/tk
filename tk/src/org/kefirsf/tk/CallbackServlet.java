@@ -28,6 +28,11 @@ public class CallbackServlet extends HttpServlet {
                 throw new ServletException(e);
             }
         }
-        response.sendRedirect(request.getContextPath() + "/");
+
+        if (request.getSession().getAttribute(TwitServlet.COMMAND_ATTR) != null) {
+            response.sendRedirect(request.getContextPath() + "/twit");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/");
+        }
     }
 }

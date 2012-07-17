@@ -80,10 +80,19 @@ public class TwitCommand implements Serializable {
         this.twitter = twitter;
     }
 
+    public String getText() {
+        return text;
+    }
+
     public void setText(String text) {
         if (text != null) {
             this.text = text.trim();
         }
+    }
+
+    public String getFontColor(){
+        // TODO
+        return "#";
     }
 
     public void setFontColor(String color) {
@@ -94,6 +103,11 @@ public class TwitCommand implements Serializable {
                 // Nothing!
             }
         }
+    }
+
+    public String getBackgroundColor(){
+        // TODO
+        return "";
     }
 
     public void setBackgroundColor(String color) {

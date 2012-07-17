@@ -57,17 +57,6 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
-    <!-- Authorization -->
-    <filter>
-        <filter-name>AuthFilter</filter-name>
-        <filter-class>org.kefirsf.tk.AuthFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>AuthFilter</filter-name>
-        <servlet-name>TwitServlet</servlet-name>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
     <!-- Sitemesh -->
     <filter>
         <filter-name>ClearSitemeshAppliedOnceFilter</filter-name>
@@ -131,15 +120,6 @@
     <servlet-mapping>
         <servlet-name>CallbackServlet</servlet-name>
         <url-pattern>/callback</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>SigninServlet</servlet-name>
-        <servlet-class>org.kefirsf.tk.SigninServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SigninServlet</servlet-name>
-        <url-pattern>/signin</url-pattern>
     </servlet-mapping>
 
     <servlet>
