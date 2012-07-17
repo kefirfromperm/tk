@@ -9,13 +9,11 @@ import java.util.regex.Pattern;
 
 public class TextWrapper {
     public static final int STRING_LENGTH = 37;
-    public static final int MAX_STRING_COUNT = 34;
-    public static final int MAX_SIZE = 1300;
 
     public TextWrapper() {
     }
 
-    public String[] wrap(String text) {
+    public static String[] wrap(String text) {
         List<String> list = new ArrayList<String>();
         for (String str : text.split("\\n")) {
             if (str.length() > STRING_LENGTH) {
@@ -35,7 +33,7 @@ public class TextWrapper {
      * @param string source string without line separators
      * @return list of strings
      */
-    private List<String> wrap1(String string) {
+    private static List<String> wrap1(String string) {
         List<String> list = new ArrayList<String>();
 
         SortedSet<Region> regions = new TreeSet<Region>();
@@ -95,7 +93,7 @@ public class TextWrapper {
         return list;
     }
 
-    private class Region implements Comparable<Region> {
+    private static class Region implements Comparable<Region> {
         private final int start;
         private final int end;
         private final boolean punct;

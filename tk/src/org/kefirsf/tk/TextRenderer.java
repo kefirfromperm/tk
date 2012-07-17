@@ -20,11 +20,11 @@ public class TextRenderer {
     public static final int FONT_SIZE = 36;
 
 
-    public void render(String[] strings, OutputStream out, Color fontColor, Color backgroundColor) throws IOException {
+    public static void render(String[] strings, OutputStream out, Color fontColor, Color backgroundColor) throws IOException {
         ImageIO.write(render(strings, fontColor, backgroundColor), "PNG", out);
     }
 
-    private RenderedImage render(String[] strings, Color fontColor, Color backgroundColor) {
+    private static RenderedImage render(String[] strings, Color fontColor, Color backgroundColor) {
         // Height
         int height = PADDING + strings.length * STRING_HEIGHT;
 
