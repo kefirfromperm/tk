@@ -21,7 +21,7 @@ import java.util.Map;
  * @author Vitalii Samolovskikh aka Kefir
  */
 public class TwitServlet extends HttpServlet {
-    public static final String ERROR_MESSAGE = "errorMessage";
+    private static final String ERROR_MESSAGE = "errorMessage";
     public static final String COMMAND_ATTR = "TWIT_COMMAND";
 
     protected void service(
@@ -81,14 +81,16 @@ public class TwitServlet extends HttpServlet {
         twitter = new TwitterFactory().getInstance();
         session.setAttribute("twitter", twitter);
         try {
+/*
             RequestToken requestToken = twitter.getOAuthRequestToken(MessageFormat.format(
                     "http://{0}:{1}{2}/callback",
                     request.getServerName(),
                     String.valueOf(request.getLocalPort()),
                     request.getContextPath()
             ));
+*/
 
-            //RequestToken requestToken = twitter.getOAuthRequestToken();
+            RequestToken requestToken = twitter.getOAuthRequestToken();
             session.setAttribute("requestToken", requestToken);
             response.sendRedirect(requestToken.getAuthenticationURL());
         } catch (TwitterException e) {

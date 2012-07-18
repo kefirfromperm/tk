@@ -8,7 +8,7 @@ import java.util.Properties;
  * @author Vitalii Samolovskikh aka Kefir
  */
 public class ConfigurationHolder {
-    private static ConfigurationHolder instance = new ConfigurationHolder();
+    private static final ConfigurationHolder instance = new ConfigurationHolder();
     private final Properties properties;
 
     public static ConfigurationHolder getInstance() {

@@ -79,6 +79,7 @@ public class TwitCommand implements Serializable {
         this.twitter = twitter;
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public String getText() {
         return text;
     }
@@ -89,8 +90,9 @@ public class TwitCommand implements Serializable {
         }
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public String getFontColor() {
-        return colorToString(fontColor);
+        return ColorUtils.colorToString(fontColor);
     }
 
     public void setFontColor(String color) {
@@ -103,14 +105,9 @@ public class TwitCommand implements Serializable {
         }
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public String getBackgroundColor() {
-        return colorToString(backgroundColor);
-    }
-
-    static String colorToString(Color color) {
-        int rgb = color.getRGB();
-        rgb = rgb | 0xff000000;
-        return "#" + Integer.toHexString(rgb).substring(2);
+        return ColorUtils.colorToString(backgroundColor);
     }
 
     public void setBackgroundColor(String color) {

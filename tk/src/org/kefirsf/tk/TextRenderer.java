@@ -14,10 +14,10 @@ import java.io.OutputStream;
  */
 public class TextRenderer {
 
-    public static final int WIDTH = 870;
-    public static final int PADDING = 20;
-    public static final int STRING_HEIGHT = 40;
-    public static final int FONT_SIZE = 36;
+    private static final int WIDTH = 870;
+    private static final int PADDING = 20;
+    private static final int STRING_HEIGHT = 40;
+    private static final int FONT_SIZE = 36;
 
 
     public static void render(String[] strings, OutputStream out, Color fontColor, Color backgroundColor) throws IOException {

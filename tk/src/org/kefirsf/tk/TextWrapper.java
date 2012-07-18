@@ -7,10 +7,10 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextWrapper {
-    public static final int STRING_LENGTH = 37;
+public final class TextWrapper {
+    private static final int STRING_LENGTH = 37;
 
-    public TextWrapper() {
+    private TextWrapper() {
     }
 
     public static String[] wrap(String text) {
