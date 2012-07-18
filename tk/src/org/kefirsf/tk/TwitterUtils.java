@@ -12,7 +12,7 @@ public final class TwitterUtils {
         boolean flag = false;
         if(twitter!=null){
             try {
-                twitter.getOAuthAccessToken();
+                twitter.verifyCredentials();
                 flag = true;
             } catch (TwitterException e) {
                 // Nothing!

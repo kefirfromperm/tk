@@ -25,17 +25,16 @@ public class TwitCommand implements Serializable {
     public TwitCommand() {
     }
 
-    public boolean validate(){
-        if(text.length()==0){
+    public boolean validate() {
+        if (text.length() == 0) {
             errorCode = "message.error.blank";
             return false;
         }
 
-        if(text.length()> MAX_SIZE){
+        if (text.length() > MAX_SIZE) {
             errorCode = "message.error.long";
             return false;
         }
-
 
         return true;
     }
@@ -48,18 +47,18 @@ public class TwitCommand implements Serializable {
     public boolean execute() {
         // Wrap text
         String[] strings = TextWrapper.wrap(text);
-        if(strings.length > MAX_STRING_COUNT){
+        if (strings.length > MAX_STRING_COUNT) {
             errorCode = "message.error.too.many.strings";
             return false;
         }
 
         // Render image
         InputStream imageStream;
-        try{
+        try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             TextRenderer.render(strings, baos, fontColor, backgroundColor);
             imageStream = new ByteArrayInputStream(baos.toByteArray());
-        }catch (IOException e){
+        } catch (IOException e) {
             errorCode = "message.error.twitter";
             return false;
         }
@@ -90,9 +89,8 @@ public class TwitCommand implements Serializable {
         }
     }
 
-    public String getFontColor(){
-        // TODO
-        return "#";
+    public String getFontColor() {
+        return colorToString(fontColor);
     }
 
     public void setFontColor(String color) {
@@ -105,9 +103,14 @@ public class TwitCommand implements Serializable {
         }
     }
 
-    public String getBackgroundColor(){
-        // TODO
-        return "";
+    public String getBackgroundColor() {
+        return colorToString(backgroundColor);
+    }
+
+    static String colorToString(Color color) {
+        int rgb = color.getRGB();
+        rgb = rgb | 0xff000000;
+        return "#" + Integer.toHexString(rgb).substring(2);
     }
 
     public void setBackgroundColor(String color) {
