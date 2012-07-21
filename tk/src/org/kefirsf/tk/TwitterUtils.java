@@ -1,7 +1,6 @@
 package org.kefirsf.tk;
 
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
 
 /**
  * Utilities for twitter.
@@ -14,7 +13,7 @@ public final class TwitterUtils {
             try {
                 twitter.verifyCredentials();
                 flag = true;
-            } catch (TwitterException e) {
+            } catch (Throwable e) {
                 // Nothing!
             }
         }
