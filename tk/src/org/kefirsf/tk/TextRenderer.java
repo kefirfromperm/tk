@@ -12,13 +12,15 @@ import java.io.OutputStream;
  *
  * @author Vitalii Samolovskikh aka Kefir
  */
-public class TextRenderer {
+public final class TextRenderer {
 
     private static final int WIDTH = 870;
     private static final int PADDING = 20;
     private static final int STRING_HEIGHT = 40;
     private static final int FONT_SIZE = 36;
 
+    private TextRenderer() {
+    }
 
     public static void render(String[] strings, OutputStream out, Color fontColor, Color backgroundColor) throws IOException {
         ImageIO.write(render(strings, fontColor, backgroundColor), "PNG", out);
