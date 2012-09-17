@@ -81,16 +81,19 @@ public class TwitServlet extends HttpServlet {
         twitter = new TwitterFactory().getInstance();
         session.setAttribute("twitter", twitter);
         try {
-/*
-            RequestToken requestToken = twitter.getOAuthRequestToken(MessageFormat.format(
-                    "http://{0}:{1}{2}/callback",
-                    request.getServerName(),
-                    String.valueOf(request.getLocalPort()),
-                    request.getContextPath()
-            ));
-*/
+            RequestToken requestToken;
 
-            RequestToken requestToken = twitter.getOAuthRequestToken();
+            if (Environment.get() == Environment.DEVELOPMENT) {
+                requestToken = twitter.getOAuthRequestToken(MessageFormat.format(
+                        "http://{0}:{1}{2}/callback",
+                        request.getServerName(),
+                        String.valueOf(request.getLocalPort()),
+                        request.getContextPath()
+                ));
+            } else {
+                requestToken = twitter.getOAuthRequestToken();
+            }
+
             session.setAttribute("requestToken", requestToken);
             response.sendRedirect(requestToken.getAuthenticationURL());
         } catch (TwitterException e) {
