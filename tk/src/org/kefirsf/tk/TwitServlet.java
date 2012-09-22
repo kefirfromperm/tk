@@ -37,6 +37,7 @@ public class TwitServlet extends HttpServlet {
             command.setText(request.getParameter("message"));
             command.setFontColor(request.getParameter("font-color"));
             command.setBackgroundColor(request.getParameter("background-color"));
+            command.setHideAnnotation(request.getParameter("hide-annotation") != null);
         }
 
         if (!command.validate()) {

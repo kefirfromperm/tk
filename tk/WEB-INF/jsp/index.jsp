@@ -14,10 +14,16 @@
         <label for="message"><fmt:message key="message.label.twit"/></label>
         <textarea rows="8" cols="60" id="message" name="message" style="color: ${fontColor};background-color: ${backgroundColor};"><c:out value="${requestScope.command.text}"/></textarea>
         <div id="counter" class="js">0</div>
+
+        <input type="checkbox" id="hide-annotation" name="hide-annotation" value="true" <c:if test="${requestScope.command.hideAnnotation}">checked="checked"</c:if>/>
+        <label for="hide-annotation"><fmt:message key="message.label.hide.annotation"/></label>
+
         <fmt:message key="message.label.font.color" var="fontColorLabel"/>
         <tags:colorSelector label="${fontColorLabel}" name="font-color" selected="${fontColor}"/>
+
         <fmt:message key="message.label.background.color" var="backgroundColorLabel"/>
         <tags:colorSelector label="${backgroundColorLabel}" name="background-color" selected="${backgroundColor}"/>
+
         <input class="button twit" type="submit" value="<fmt:message key="button.twit"/>"/>
     </form>
     <c:if test="${requestScope.errorMessage!=null}">

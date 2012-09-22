@@ -8,17 +8,24 @@ import java.awt.*;
 import java.io.*;
 
 /**
+ * Contains all info about long twit.
+ *
  * @author kefir
  */
 public class TwitCommand implements Serializable {
     private static final int MAX_SIZE = 1300;
     private static final int MAX_STRING_COUNT = 34;
 
+    // Input properties
     private String text = "";
     private Color fontColor = Color.BLACK;
     private Color backgroundColor = Color.WHITE;
+    private boolean hideAnnotation = false;
+
+    // Tune properties
     private Twitter twitter = null;
 
+    // Output properties
     private String errorCode = "";
     private Status status = null;
 
@@ -130,10 +137,27 @@ public class TwitCommand implements Serializable {
 
     private String statusText(String message) {
         ConfigurationHolder conf = ConfigurationHolder.getInstance();
-        return annotate(message) + "... " + conf.get("app.tag") + " " + conf.get("server.url");
+        StringBuilder b = new StringBuilder();
+        if(!hideAnnotation){
+            b.append(annotate(message));
+            b.append("... ");
+        }
+        b.append(conf.get("app.tag"));
+        b.append(" ");
+        b.append(conf.get("server.url"));
+        return b.toString();
     }
 
     private String annotate(String message) {
         return message.substring(0, Math.min(80, message.length())).trim();
+    }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public boolean isHideAnnotation() {
+        return hideAnnotation;
+    }
+
+    public void setHideAnnotation(boolean hideAnnotation) {
+        this.hideAnnotation = hideAnnotation;
     }
 }
