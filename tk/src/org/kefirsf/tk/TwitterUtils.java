@@ -14,7 +14,9 @@ public final class TwitterUtils {
                 twitter.verifyCredentials();
                 flag = true;
             } catch (Throwable e) {
-                // Nothing!
+                if(Environment.get() == Environment.DEVELOPMENT){
+                    e.printStackTrace();
+                }
             }
         }
         return flag;
