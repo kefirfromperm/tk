@@ -10,8 +10,9 @@ $(document).ready(function () {
 
     // Initialize counter
     messageEventListener();
-    $('#message').change(messageEventListener);
-    $('#message').keyup(messageEventListener);
+    var messageArea = $('#message');
+    messageArea.change(messageEventListener);
+    messageArea.keyup(messageEventListener);
 
     // Initialize color changing
     $('input[name="font-color"]').change(function(){
@@ -36,15 +37,17 @@ $(document).ready(function () {
 });
 
 function messageEventListener() {
-    if ($('#message').size() > 0 && $('#counter').empty().size() > 0) {
-        var length = $('#message').val().length;
-        $('#counter').text(length);
+    var messageArea = $('#message');
+    var counter = $('#counter');
+    if (messageArea.size() > 0 && counter.empty().size() > 0) {
+        var length = messageArea.val().length;
+        counter.text(length);
         if (length > 1300) {
-            $('#counter').css('color', 'red');
+            counter.css('color', 'red');
         } else if (length > 140) {
-            $('#counter').css('color', 'green');
+            counter.css('color', 'green');
         } else {
-            $('#counter').css('color', 'gray');
+            counter.css('color', 'gray');
         }
     }
 }
