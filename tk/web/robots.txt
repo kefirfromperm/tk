@@ -5,4 +5,4 @@ Disallow: /callback
 Disallow: /signin
 Disallow: /ping
 Disallow: /oscommerce/
-Sitemap: http://lngtw.com/sitemap.xml
+Sitemap: /sitemap.xml
