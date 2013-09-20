@@ -44,6 +44,16 @@
         <welcome-file>index</welcome-file>
     </welcome-file-list>
 
+    <!-- The main page -->
+    <servlet>
+        <servlet-name>main</servlet-name>
+        <jsp-file>/WEB-INF/jsp/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
     <!-- Success page -->
     <servlet>
         <servlet-name>success</servlet-name>
