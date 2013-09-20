@@ -1,6 +1,7 @@
 package org.kefirsf.tk;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.util.Locale;
  *
  * @author Vitalii Samolovskikh aka Kefir
  */
+@WebFilter(urlPatterns = "/*", dispatcherTypes = DispatcherType.REQUEST)
 public class LocaleFilter implements Filter {
     private static final String LANGUAGE_PARAMETER = "lang";
     private static final String LOCALE_COOKIE = "locale";

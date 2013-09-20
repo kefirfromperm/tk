@@ -16,59 +16,6 @@
         <param-value>en</param-value>
     </context-param>
 
-    <!-- Request encoding must be UTF-8!-->
-    <filter>
-        <filter-name>EncodingFilter</filter-name>
-        <filter-class>org.kefirsf.tk.EncodingFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>EncodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-    <!-- Redirect from www. -->
-    <filter>
-        <filter-name>WwwFilter</filter-name>
-        <filter-class>org.kefirsf.tk.WwwFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>WwwFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!-- Change locale -->
-    <filter>
-        <filter-name>LocaleFilter</filter-name>
-        <filter-class>org.kefirsf.tk.LocaleFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>LocaleFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-    <!-- Prevent session URL -->
-    <filter>
-        <filter-name>PreventUrlSessionFilter</filter-name>
-        <filter-class>org.kefirsf.tk.PreventUrlSessionFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>PreventUrlSessionFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!-- Flash support filter -->
-    <filter>
-        <filter-name>FlashFilter</filter-name>
-        <filter-class>org.kefirsf.tk.FlashFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>FlashFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
     <!-- Sitemesh -->
     <filter>
         <filter-name>ClearSitemeshAppliedOnceFilter</filter-name>

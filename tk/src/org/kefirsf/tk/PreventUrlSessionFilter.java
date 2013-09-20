@@ -1,6 +1,7 @@
 package org.kefirsf.tk;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * @author Vitalii Samolovskikh aka Kefir
  */
+@WebFilter(urlPatterns = "/*")
 public class PreventUrlSessionFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
@@ -46,11 +48,13 @@ public class PreventUrlSessionFilter implements Filter {
         }
 
         @Override
+        @SuppressWarnings("deprecation")
         public String encodeUrl(String url) {
             return removeSession(super.encodeUrl(url));
         }
 
         @Override
+        @SuppressWarnings("deprecation")
         public String encodeRedirectUrl(String url) {
             return removeSession(super.encodeRedirectUrl(url));
         }

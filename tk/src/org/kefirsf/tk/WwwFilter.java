@@ -1,6 +1,7 @@
 package org.kefirsf.tk;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.io.IOException;
 /**
  * @author kefir
  */
+@WebFilter(urlPatterns = "/*")
 public class WwwFilter implements Filter {
 
     public static final String WWW_PREFIX = "www.";
