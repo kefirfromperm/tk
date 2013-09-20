@@ -7,6 +7,7 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.RequestToken;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import java.util.Map;
  *
  * @author Vitalii Samolovskikh aka Kefir
  */
+@WebServlet("/twit")
 public class TwitServlet extends HttpServlet {
     private static final String ERROR_MESSAGE = "errorMessage";
     public static final String COMMAND_ATTR = "TWIT_COMMAND";

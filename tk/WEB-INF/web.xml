@@ -2,8 +2,8 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5">
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
     <display-name>lngtw</display-name>
 
     <!-- Internationalization -->
@@ -93,14 +93,6 @@
     </filter-mapping>
 
     <!-- Index page-->
-    <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>org.kefirsf.tk.MainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
-    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index</welcome-file>
     </welcome-file-list>
@@ -113,34 +105,6 @@
     <servlet-mapping>
         <servlet-name>success</servlet-name>
         <url-pattern>/success</url-pattern>
-    </servlet-mapping>
-
-    <!-- Servlets -->
-    <servlet>
-        <servlet-name>TwitServlet</servlet-name>
-        <servlet-class>org.kefirsf.tk.TwitServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TwitServlet</servlet-name>
-        <url-pattern>/twit</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>CallbackServlet</servlet-name>
-        <servlet-class>org.kefirsf.tk.CallbackServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CallbackServlet</servlet-name>
-        <url-pattern>/callback</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>PingServlet</servlet-name>
-        <servlet-class>org.kefirsf.tk.PingServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PingServlet</servlet-name>
-        <url-pattern>/ping</url-pattern>
     </servlet-mapping>
 
     <!-- Error pages -->
