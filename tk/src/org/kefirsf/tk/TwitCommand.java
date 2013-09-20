@@ -136,20 +136,16 @@ public class TwitCommand implements Serializable {
     }
 
     private String statusText(String message) {
-        ConfigurationHolder conf = ConfigurationHolder.getInstance();
         StringBuilder b = new StringBuilder();
         if(!hideAnnotation){
             b.append(annotate(message));
             b.append("... ");
         }
-        b.append(conf.get("app.tag"));
-        b.append(" ");
-        b.append(conf.get("server.url"));
         return b.toString();
     }
 
     private String annotate(String message) {
-        return message.substring(0, Math.min(80, message.length())).trim();
+        return message.substring(0, Math.min(100, message.length())).trim();
     }
 
     @SuppressWarnings("UnusedDeclaration")
