@@ -11,9 +11,6 @@
     <meta name="keywords" content="twitter,twit,tweet,140,long,longer"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/main.css"/>" title="Style">
     <title>Long Twit</title>
-    <script src="<c:url value="/static/js/jquery-2.0.3.min.js"/>"></script>
-    <script src="<c:url value="/static/js/jquery.timers-1.2.js"/>"></script>
-    <script src="<c:url value="/static/js/lngtw.js"/>"></script>
     <d:head/>
 </head>
 <body>
@@ -22,6 +19,9 @@
     <d:body/>
     <%@include file="/WEB-INF/jsp/footer.jspf" %>
 </div>
+<script src="<c:url value="/static/js/jquery-2.0.3.min.js"/>"></script>
+<script src="<c:url value="/static/js/jquery.timers-1.2.js"/>"></script>
+<script src="<c:url value="/static/js/lngtw.js"/>"></script>
 <%@ include file="/WEB-INF/jsp/yandex.jspf" %>
 </body>
 </html>
