@@ -1,7 +1,6 @@
 package org.kefirsf.tk;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import java.util.Map;
  *
  * @author Vitalii Samolovskikh aka Kefir
  */
-@WebFilter(urlPatterns = "/*", dispatcherTypes = DispatcherType.REQUEST)
 public class FlashFilter implements Filter {
 
     private static final String FLASH_OLD_GENERATION = "FLASH_OLD_GENERATION";
