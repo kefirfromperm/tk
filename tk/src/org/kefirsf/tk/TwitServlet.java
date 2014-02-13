@@ -80,7 +80,7 @@ public class TwitServlet extends HttpServlet {
 
     private void signin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        Twitter twitter = TwitterFactory.getSingleton();
+        Twitter twitter = new TwitterFactory().getInstance();
         session.setAttribute("twitter", twitter);
         try {
             RequestToken requestToken;
