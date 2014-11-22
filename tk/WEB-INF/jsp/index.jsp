@@ -15,11 +15,15 @@
         <textarea rows="8" cols="60" id="message" name="message" style="color: ${fontColor};background-color: ${backgroundColor};"><c:out value="${requestScope.command.text}"/></textarea>
         <div id="counter" class="js">0</div>
 
+        <div>
         <input type="checkbox" id="add-poll" name="add-poll" value="true" <c:if test="${requestScope.command.addPoll}">checked="checked"</c:if>/>
         <label for="add-poll"><fmt:message key="message.label.add.poll"/></label>
+        </div>
 
+        <div>
         <input type="checkbox" id="hide-annotation" name="hide-annotation" value="true" <c:if test="${requestScope.command.hideAnnotation}">checked="checked"</c:if>/>
         <label for="hide-annotation"><fmt:message key="message.label.hide.annotation"/></label>
+        </div>
 
         <fmt:message key="message.label.font.color" var="fontColorLabel"/>
         <tags:colorSelector label="${fontColorLabel}" name="font-color" selected="${fontColor}"/>
