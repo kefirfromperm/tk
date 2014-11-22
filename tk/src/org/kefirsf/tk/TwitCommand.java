@@ -6,6 +6,7 @@ import twitter4j.Twitter;
 
 import java.awt.*;
 import java.io.*;
+import java.text.MessageFormat;
 
 /**
  * Contains all info about long twit.
@@ -15,12 +16,14 @@ import java.io.*;
 public class TwitCommand implements Serializable {
     private static final int MAX_SIZE = 1300;
     private static final int MAX_STRING_COUNT = 34;
+    public static final String ANNOTATION_SUFFIX = "...";
 
     // Input properties
     private String text = "";
     private Color fontColor = Color.BLACK;
     private Color backgroundColor = Color.WHITE;
     private boolean hideAnnotation = false;
+    private boolean addPoll = false;
 
     // Tune properties
     private Twitter twitter = null;
@@ -138,14 +141,26 @@ public class TwitCommand implements Serializable {
     private String statusText(String message) {
         StringBuilder b = new StringBuilder();
         if(!hideAnnotation){
-            b.append(annotate(message));
-            b.append("... ");
+            int len;
+            if(addPoll){
+                len = 60;
+            } else {
+                len = 140;
+            }
+            b.append(annotate(message, len));
+        }
+        if(addPoll){
+            b.append(MessageFormat.format("http://{0}/p/{1}/YES", "lngtw.com", 0));
         }
         return b.toString();
     }
 
-    private String annotate(String message) {
-        return message.substring(0, Math.min(100, message.length())).trim();
+    private String annotate(String message, int len) {
+        if(message.length()<=len){
+            return message;
+        } else {
+            return message.substring(0, len-ANNOTATION_SUFFIX.length()).trim()+ANNOTATION_SUFFIX;
+        }
     }
 
     @SuppressWarnings("UnusedDeclaration")
@@ -155,5 +170,13 @@ public class TwitCommand implements Serializable {
 
     public void setHideAnnotation(boolean hideAnnotation) {
         this.hideAnnotation = hideAnnotation;
+    }
+
+    public boolean isAddPoll() {
+        return addPoll;
+    }
+
+    public void setAddPoll(boolean addPoll) {
+        this.addPoll = addPoll;
     }
 }
