@@ -15,6 +15,11 @@ import java.io.*;
 public class TwitCommand implements Serializable {
     private static final int MAX_SIZE = 1300;
     private static final int MAX_STRING_COUNT = 34;
+    private static final String ANNOTATION_SUFFIX = "...";
+    private static final String LINK_SUFFIX = "lngtw.com";
+    private static final int TWIT_LENGTH = 140;
+    private static final int IMAGE_LENGT = 23;
+    private static final int LINK_LENGTH = 22;
 
     // Input properties
     private String text = "";
@@ -137,15 +142,20 @@ public class TwitCommand implements Serializable {
 
     private String statusText(String message) {
         StringBuilder b = new StringBuilder();
-        if(!hideAnnotation){
-            b.append(annotate(message));
-            b.append("... ");
+        if (!hideAnnotation) {
+            b.append(annotate(message, TWIT_LENGTH - IMAGE_LENGT - LINK_LENGTH - 1));
+            b.append(" ");
         }
+        b.append(LINK_SUFFIX);
         return b.toString();
     }
 
-    private String annotate(String message) {
-        return message.substring(0, Math.min(100, message.length())).trim();
+    private String annotate(String message, int maxLength) {
+        if (message.length() <= maxLength) {
+            return message;
+        } else {
+            return message.substring(0, maxLength - ANNOTATION_SUFFIX.length()) + ANNOTATION_SUFFIX;
+        }
     }
 
     @SuppressWarnings("UnusedDeclaration")
