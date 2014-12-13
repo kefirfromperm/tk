@@ -16,7 +16,11 @@ import java.text.MessageFormat;
 public class TwitCommand implements Serializable {
     private static final int MAX_SIZE = 1300;
     private static final int MAX_STRING_COUNT = 34;
-    public static final String ANNOTATION_SUFFIX = "...";
+    private static final String ANNOTATION_SUFFIX = "...";
+    private static final String LINK_SUFFIX = "lngtw.com";
+    private static final int TWIT_LENGTH = 140;
+    private static final int IMAGE_LENGT = 23;
+    private static final int LINK_LENGTH = 22;
 
     // Input properties
     private String text = "";
@@ -140,26 +144,19 @@ public class TwitCommand implements Serializable {
 
     private String statusText(String message) {
         StringBuilder b = new StringBuilder();
-        if(!hideAnnotation){
-            int len;
-            if(addPoll){
-                len = 60;
-            } else {
-                len = 140;
-            }
-            b.append(annotate(message, len));
+        if (!hideAnnotation) {
+            b.append(annotate(message, TWIT_LENGTH - IMAGE_LENGT - LINK_LENGTH - 1));
+            b.append(" ");
         }
-        if(addPoll){
-            b.append(MessageFormat.format("http://{0}/p/{1}/YES", "lngtw.com", 0));
-        }
+        b.append(LINK_SUFFIX);
         return b.toString();
     }
 
-    private String annotate(String message, int len) {
-        if(message.length()<=len){
+    private String annotate(String message, int maxLength) {
+        if (message.length() <= maxLength) {
             return message;
         } else {
-            return message.substring(0, len-ANNOTATION_SUFFIX.length()).trim()+ANNOTATION_SUFFIX;
+            return message.substring(0, maxLength - ANNOTATION_SUFFIX.length()) + ANNOTATION_SUFFIX;
         }
     }
 
